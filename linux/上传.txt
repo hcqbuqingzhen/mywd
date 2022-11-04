@@ -1,0 +1,5 @@
+﻿http://192.168.1.112/group1/M00/00/00/wKgBcF0x4pyAKE0AAAyYNALKI9k285.jpg
+http://192.168.1.112/group1/M00/00/00/wKgBcF0x4teAGdpVAAE6Fzo_tmo436.jpg
+http://192.168.1.112/group1/M00/00/00/wKgBcF0x4vuAHPL4AALzOp5bcj8996.jpg
+http://192.168.1.113/group2/M00/00/00/wKgBcV0x4xGAeAF6AAIcYaQdy0s728.jpg
+可以看出是轮训的方式存入到fast中的

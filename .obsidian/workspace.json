@@ -1,0 +1,152 @@
+{
+  "main": {
+    "id": "33a48bc4f8e678d1",
+    "type": "split",
+    "children": [
+      {
+        "id": "22b6608b79ae8a85",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7a39a7d98c739361",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "杂项/面试题收集/mysql.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2fddb343a82681f5",
+    "type": "split",
+    "children": [
+      {
+        "id": "db93c9c7741fa2af",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ba0d98c610a60508",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a8d13954d1b516f3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "46a0e3b1cff25389",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e7d211b323c80a81",
+    "type": "split",
+    "children": [
+      {
+        "id": "1522cd82716fbfa7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3afb10eec3f05519",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "杂项/面试题收集/mysql.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f5de4798576e0c2f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "杂项/面试题收集/mysql.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8f4ba3744e597be9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "fe3434472267b03b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "杂项/面试题收集/mysql.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "7a39a7d98c739361",
+  "lastOpenFiles": [
+    "杂项/面试题收集/spring.md",
+    "杂项/面试题收集/redis.md",
+    "杂项/面试题收集/mysql.md",
+    "杂项/面试题收集/mq.md",
+    "杂项/面试题收集/jvm.md",
+    "杂项/面试题收集/java.md",
+    "杂项/面试题收集/系统设计.md",
+    "nginx/Nginx核心知识100讲-第二部分课件.pdf",
+    "springcloud/es搜索/es01-由工作内容引入.md",
+    "杂项/linux下navicat破解.md"
+  ]
+}

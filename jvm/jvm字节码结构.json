@@ -1,0 +1,101 @@
+{
+    "*Magic Number":"0xCAFEBABE",
+    "Version":{
+        "*minor version":"u2",
+        "*major version":"u2"
+    },
+    "Constant Pool":{
+        "*Constant_count":"u2",
+        "*Constant_info":[
+            "类型众多，参照表格，基本结构为u1+n个字节，参照表格"            
+        ]
+    },
+    "Class info":{
+        "*Access Flags":"u2，类的访问修饰符",
+        "*This Class Name":"u2类名",
+        "*Super Class Name":"u2 父类名字",
+        "*Interfaces_count":"接口数",
+        "*Interfaces_name":["接口名有多个"]
+    },
+    "Fields":{
+        "*Fields_count":"u2,成员变量数",
+        "Fields_info *x":[
+            {
+               "*access_flags":"u2,权限修饰符",
+               "*name_index":"u2,变量名称索引" ,
+               "*descriptor_index":"u2,类型描述符索引",
+               "*attribute_count":"u2,属性数目",
+               "*attribute_info *x":[
+                   {}
+               ]
+            }
+        ]
+
+    },
+    "Methods":{
+        "*methods_count":"u2，方法数",
+        "methods_info":[
+            {
+                "*access_flags":"u2,访问修饰符",
+                "*name_index":"u2,方法名称索引",
+                "*descriptor_index":"u2,类型描述符索引",
+                "*attribute_count":"u2,属性数目",
+                "attribute_info *x":[
+                    {
+                        "*attribute_name_index":"u2,属性名索引",
+                        "*attribute_length":"u4,属性长度,指之后数据长度",
+                        "*max_stack":"u2,最大栈深",
+                        "*max_locals":"u2,最大局部变量数",
+                        "*code_length":"u4,操作码长度",
+                        "code":[
+                            "*code1",
+                            "*code2",
+                            "...code为u1组成"
+                        ],
+                        "*exception_table_length":"u2,异常表长度",
+                        "exception_table":[
+                            {
+                                "*Start_Pc":"u4,异常开始作用行",
+                                "*Eed_Pc":"u4,异常结束作用行",
+                                "*Handler_Pc":"u4,异常发生跳转行",
+                                "*Exception_name_index":"u2,异常名索引"
+                                }
+                        ],
+                        "*attribute_count":"u2,属性数目",
+                        "attribute_info *x":[
+                            {
+                                "*attribute_name_index":"u2,属性名索引",
+                                "*attribute_length":"u4,属性长度,指之后数据长度",
+                                "*attribute_count":"表示有几个对应关系",
+                                "attribute_info":[
+                                    {
+                                        "*linenumbertype":"字节码和源码行号对照表，u4类型，有多个，(u2-u2)表示字节码中行号和源代码行号的对应关系"
+                                    },
+                                    {
+                                        "localvariabletable":"局部变量表",
+                                        "*局部变量在字节码中开始作用的位置":"u2类型",
+                                        "*局部变量在字节码中作用的长度":"u2类型",
+                                        "*局部变量名称索引":"u2类型",
+                                        "*局部变量描述符索引":"u2类型",
+                                        "*局部变量localvariabletable中的索引":"u2"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "Attributes":{
+        "*attribute_count":"u2,属性数目",
+        "attribute_table":[
+            {
+            "*attribute_name_index":"u2,属性名索引",
+            "*attribute_length":"属性值长度",
+            "*attribute_index":"属性值索引"
+            }
+
+        ]
+    }    
+}

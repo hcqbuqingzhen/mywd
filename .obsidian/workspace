@@ -1,0 +1,144 @@
+{
+  "main": {
+    "id": "33a48bc4f8e678d1",
+    "type": "split",
+    "children": [
+      {
+        "id": "5af6006361b3c2e8",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "linux/软件安装/es在linux下集群搭建.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2fddb343a82681f5",
+    "type": "split",
+    "children": [
+      {
+        "id": "db93c9c7741fa2af",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ba0d98c610a60508",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "a8d13954d1b516f3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "46a0e3b1cff25389",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e7d211b323c80a81",
+    "type": "split",
+    "children": [
+      {
+        "id": "1522cd82716fbfa7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3afb10eec3f05519",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "linux/软件安装/es在linux下集群搭建.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f5de4798576e0c2f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "linux/软件安装/es在linux下集群搭建.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8f4ba3744e597be9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "fe3434472267b03b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "linux/软件安装/es在linux下集群搭建.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "5af6006361b3c2e8",
+  "lastOpenFiles": [
+    "springcloud/sa-token/sa-token初探.md",
+    "springcloud/log/log上.pdf",
+    "面试题收集/jvm.md",
+    "面试题收集/assets/image-20220715013046676.png",
+    "杂项/linux下navicat破解.md",
+    "springcloud/es搜索/es01-由工作内容引入.md",
+    "springcloud/es搜索/es04-es原理.md",
+    "springcloud/es搜索/es01-由工作内容引入/es01-01.jpg",
+    "springcloud/es搜索/es01-由工作内容引入/es01-02.jpg",
+    "分布式事务/01-tx-tlc-分布式事务管理器.md"
+  ]
+}
