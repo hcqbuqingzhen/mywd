@@ -23,7 +23,7 @@
 同时需要在bash的rc中设置环境变量
 例如打开zshrc,粘贴以下文件
 
-```
+```shell
 #pyenv-管理python环境
 export PYENV_ROOT=~/.pyenv
 export PATH=$PYENV_ROOT/shims:PYENVROOT/shims:$PATH
@@ -61,7 +61,7 @@ MYSQL_ROOT_PASSWORD=root账户密码
 
 redis有些配置在docker—desktop无法配置,使用命令行启动如下
 
-```
+```shell
 docker run --name redis
 -p 6379:6379
 -v /Users/eee/docker/redis/conf/redis.conf:/etc/redis/redis.conf
