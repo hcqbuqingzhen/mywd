@@ -60,6 +60,15 @@ MYSQL_ROOT_PASSWORD=root账户密码
 ### redis
 
 redis有些配置在docker—desktop无法配置,使用命令行启动如下
+1、文件夹映射
+
+```shell
+mkdir /Users/eee/docker/redis/data
+mkdir /Users/eee/docker/redis/conf
+touch /Users/eee/docker/redis/conf/redis.conf
+```
+
+2、启动容器
 
 ```shell
 docker run --name redis
@@ -84,6 +93,7 @@ mongodb的容器,需要做的前置工作挺多
    touch /Users/eee/docker/mongodb/conf/mongod.conf
    vim /Users/eee/docker/mongodb/conf/mongod.conf
    ```
+
 2. 编辑内容如下
 
    ```yml
@@ -98,6 +108,7 @@ mongodb的容器,需要做的前置工作挺多
    security:
      authorization: enabled
    ```
+
 3. 执行命令
 
    (最后的配置文件名称,要和12建立的配置文件对应上,且要和挂载的configdb文件夹对应上)
@@ -114,7 +125,8 @@ mongodb的容器,需要做的前置工作挺多
    -d  mongodb/mongodb-community-server:latest
    --config /data/configdb/mongod.conf
    ```
-4. 进入到mongodb容器执行
+
+3. 进入到mongodb容器执行
 
    ```shell
    mongosh
@@ -131,7 +143,7 @@ mongodb的容器,需要做的前置工作挺多
 
     //创建一般应用用户和库
     db.createUser({
-    user: "rrs_amidn",
+    user: "rrs_read_write",
     pwd: "rrs@hcq@123",
     roles: [
     { role: "readWrite", db: "rrs" },
@@ -140,7 +152,7 @@ mongodb的容器,需要做的前置工作挺多
     })
     ```
 
-5. 退出容器,停止容器,修改配置文件
+4. 退出容器,停止容器,修改配置文件
 
 ```yml
 security:
@@ -148,3 +160,6 @@ security:
 ```
 
 6. 重启容器
+这样使用新的用户名和密码就可以链接了
+![mongodb](https://raw.githubusercontent.com/hcqbuqingzhen/picGoimg/main/picGoimg/20250415200508316.png)
+
