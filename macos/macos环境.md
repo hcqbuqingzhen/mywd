@@ -165,16 +165,16 @@ security:
 
 ### 4.nacos
 
-有一些老项目需要nacos的老版本,因此会搭建新和旧两个版本,分别是2.1.0和2.5.0,这里的nacos想要使用本地已有的mysql镜像,需要做一些配置.
+有一些老项目需要nacos的老版本,因此会搭建新和旧两个版本,分别是2.2.0和3.0,这里的nacos想要使用本地已有的mysql镜像,需要做一些配置.
 
 1. 在原有的mysql中增加新用户
 
 ```sql
 CREATE USER 'nacos'@'%' IDENTIFIED BY 'nacos';
-GRANT ALL ON nacos24.* TO 'nacos'@'%';
-GRANT ALL ON nacos21.* TO 'nacos'@'%';
-create database nacos24;
-create database nacos21;
+GRANT ALL ON nacos30.* TO 'nacos'@'%';
+GRANT ALL ON nacos22.* TO 'nacos'@'%';
+create database nacos30;
+create database nacos22;
 ```
 
 2. 新增docker网络
@@ -184,21 +184,20 @@ docker network create local
 docker network connect local mysql8
 ```
 
-3. nacos2.4运行
+3. nacos3.0运行
 
 ```shell
 docker run -d \
-  --name nacos2.4 \
+  --name nacos3.0 \
   --network local \
-  -p 8848:8848 \
-  -p 9848:9848 \
-  -v /Users/eee/docker/nacos/2.4/logs:/home/nacos/logs \
-  -v /Users/eee/docker/nacos/2.4/data:/home/nacos/data \
+  -p 8848:8080 \
+  -v /Users/eee/docker/nacos/3.0/logs:/home/nacos/logs \
+  -v /Users/eee/docker/nacos/3.0/data:/home/nacos/data \
   -e PREFER_HOST_MODE=hostname \
   -e MODE=standalone \
   -e SPRING_DATASOURCE_PLATFORM=mysql \
   -e MYSQL_SERVICE_HOST=mysql8 \
-  -e MYSQL_SERVICE_DB_NAME=nacos24 \
+  -e MYSQL_SERVICE_DB_NAME=nacos30 \
   -e MYSQL_SERVICE_PORT=3306 \
   -e MYSQL_SERVICE_USER=nacos \
   -e MYSQL_SERVICE_PASSWORD=nacos \
@@ -208,24 +207,29 @@ docker run -d \
   -e NACOS_AUTH_IDENTITY_VALUE=2xxx \
   -e NACOS_AUTH_TOKEN=SecretKey012345678901234567890123456789012345678901234567890123456789 \
   --restart=always \
-  nacos/nacos-server:v2.4.0-slim
+  nacos/nacos-server:v3.0.0-slim
 ```
 
-3. nacos2.1运行
+```shell
+  -e SERVER_PORT=8848 \
+  -e SERVER_SERVLET_CONTEXT-PATH=/nacos \
+```
+
+3. nacos2.2运行
 
 ```shell
 docker run -d \
-  --name nacos2.1 \
+  --name nacos2.2 \
   --network local \
   -p 8858:8848 \
   -p 9858:9848 \
-  -v /Users/eee/docker/nacos/2.1/logs:/home/nacos/logs \
-  -v /Users/eee/docker/nacos/2.1/data:/home/nacos/data \
+  -v /Users/eee/docker/nacos/2.2/logs:/home/nacos/logs \
+  -v /Users/eee/docker/nacos/2.2/data:/home/nacos/data \
   -e PREFER_HOST_MODE=hostname \
   -e MODE=standalone \
   -e SPRING_DATASOURCE_PLATFORM=mysql \
   -e MYSQL_SERVICE_HOST=mysql8 \
-  -e MYSQL_SERVICE_DB_NAME=nacos21 \
+  -e MYSQL_SERVICE_DB_NAME=nacos22 \
   -e MYSQL_SERVICE_PORT=3306 \
   -e MYSQL_SERVICE_USER=nacos \
   -e MYSQL_SERVICE_PASSWORD=nacos \
@@ -235,11 +239,11 @@ docker run -d \
   -e NACOS_AUTH_IDENTITY_VALUE=2xxx \
   -e NACOS_AUTH_TOKEN=SecretKey012345678901234567890123456789012345678901234567890123456789 \
   --restart=always \
-  nacos/nacos-server:v2.1.0-slim
+  nacos/nacos-server:v2.2.1-slim
 ```
 
 #### 注意事项
 
-1. 每个版本的nacos的sql可能是不一样的,因此运行不同的nacos版本要在对应的库下执行对应版本的sql,比如我运行2.1和2.4分别建了两个库并且初始化了不同的sql.相对应的sql可以在github上找到,或者直接下载对应版本的nacos解压后找到sql.
-[github//nacos下载](https://github.com/alibaba/nacos/releases?expanded=true&page=4&q=2.1)
+1. 每个版本的nacos的sql可能是不一样的,因此运行不同的nacos版本要在对应的库下执行对应版本的sql,比如我运行2.2和3.0分别建了两个库并且初始化了不同的sql.相对应的sql可以在github上找到,或者直接下载对应版本的nacos解压后找到sql.
+[github//nacos下载](https://github.com/alibaba/nacos/releases?expanded=true&page=4&q=2.2.1)
 [github//nocos-docker](https://github.com/nacos-group/nacos-docker/blob/master/env/nacos-standalone-mysql.env)
