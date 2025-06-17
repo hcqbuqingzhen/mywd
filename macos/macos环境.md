@@ -247,3 +247,73 @@ docker run -d \
 1. 每个版本的nacos的sql可能是不一样的,因此运行不同的nacos版本要在对应的库下执行对应版本的sql,比如我运行2.2和3.0分别建了两个库并且初始化了不同的sql.相对应的sql可以在github上找到,或者直接下载对应版本的nacos解压后找到sql.
 [github//nacos下载](https://github.com/alibaba/nacos/releases?expanded=true&page=4&q=2.2.1)
 [github//nocos-docker](https://github.com/nacos-group/nacos-docker/blob/master/env/nacos-standalone-mysql.env)
+
+### 5.kafka
+1. 使用bitnami打包的kafka镜像,4.0后kafka已经支持无zk的方式,因此搭建一个两个实例的集群即可
+[compose文件](https://github.com/bitnami/containers/blob/main/bitnami/kafka/docker-compose.yml)
+2. 运行容器(单例)
+```shell
+docker run -d \
+  --name kafka \
+  --network local \
+  -p 9092:9092 \
+  -v /Users/eee/docker/kafka/4.0.0/k00:/bitnami \
+  -e TZ=Asia/Shanghai \
+  -e KAFKA_CFG_NODE_ID=0 \
+  -e KAFKA_CFG_PROCESS_ROLES=controller,broker \
+  -e KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093 \
+  -e KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093 \
+  -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 \
+  -e KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT \
+  -e KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER \
+  -e KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT \
+ bitnami/kafka:4.0.0
+ ```
+ KAFKA_CFG_ADVERTISED_LISTENERS这个配置项是为了在本地能访问
+
+3. 运行容器(集群)
+
+```shell
+docker run -d \
+  --name kafka1 \
+  --network local \
+  -p 9094:9092 \
+  -v /Users/eee/docker/kafka/4.0.0/k01:/bitnami \
+  -e TZ=Asia/Shanghai \
+  -e KAFKA_CFG_NODE_ID=1 \
+  -e KAFKA_CFG_PROCESS_ROLES=controller,broker \
+  -e KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka1:9093,2@kafka2:9093 \
+  -e KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093 \
+  -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9094 \
+  -e KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT \
+  -e KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER \
+  -e KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT \
+ bitnami/kafka:4.0.0
+
+
+ ## 第二个kafka实例
+ docker run -d \
+  --name kafka2 \
+  --network local \
+  -p 9095:9092 \
+  -v /Users/eee/docker/kafka/4.0.0/k02:/bitnami \
+  -e TZ=Asia/Shanghai \
+  -e KAFKA_CFG_NODE_ID=2 \
+  -e KAFKA_CFG_PROCESS_ROLES=controller,broker \
+  -e KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka1:9093,2@kafka2:9093 \
+  -e KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093 \
+  -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9095 \
+  -e KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT \
+  -e KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER \
+  -e KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT \
+ bitnami/kafka:4.0.0
+```
+
+3.注意事项
+注意当集群运行起来后肯定会报错,这是因为两个实例会自己生成cluster.id,导致不一致报错,网上或者ai说可以增加环境变量 KAFKA_CFG_CLUSTER_ID=mycluster来解决,但是我尝试后不生效.因此手动修改了两个实例的文件下的配置文件.如下图.
+![如图](https://raw.githubusercontent.com/hcqbuqingzhen/picGoimg/main/picGoimg/20250618000222397.png)
+修改其中的配置项cluster.id为一样的值,然后重启容器.
+
+4.管理工具
+此管理工具是常用的一个,也尝试过其他的工具,但是都不是很习惯
+[Offset Explorer](https://www.kafkatool.com/download.html)ß
