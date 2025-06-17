@@ -316,4 +316,4 @@ docker run -d \
 
 4.管理工具
 此管理工具是常用的一个,也尝试过其他的工具,但是都不是很习惯
-[Offset Explorer](https://www.kafkatool.com/download.html)ß
+[Offset Explorer](https://www.kafkatool.com/download.html)
