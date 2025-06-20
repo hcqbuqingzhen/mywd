@@ -190,7 +190,9 @@ docker network connect local mysql8
 docker run -d \
   --name nacos3.0 \
   --network local \
-  -p 8848:8080 \
+  -p 8848:8848 \
+  -p 8080:8080 \
+  -p 9848:9848 \
   -v /Users/eee/docker/nacos/3.0/logs:/home/nacos/logs \
   -v /Users/eee/docker/nacos/3.0/data:/home/nacos/data \
   -e PREFER_HOST_MODE=hostname \
