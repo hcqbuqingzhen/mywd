@@ -15,6 +15,33 @@
 ![安装zulujdk](https://raw.githubusercontent.com/hcqbuqingzhen/picGoimg/main/picGoimg/20250414232506987.png)
 这个想装什么版本装什么版本,一般不用命令行来搞java,idea里选择安装的jdk就好了
 
+如果命令行需要,可加入如下内容在shell的rc中
+```shell
+##maven
+export MVN_HOME=/Users/eee/xenv/apache-maven-3.8.8
+export export PATH=$MVN_HOME/bin:$PATH
+
+## jvm
+## 系统 JDK
+export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+export JAVA_17_HOME=$(/usr/libexec/java_home -v17)
+export JAVA_21_HOME=$(/usr/libexec/java_home -v21)
+
+## GraalVM JDK 17
+export GRAAL_17_HOME=/Library/Java/JavaVirtualMachines/graalvm-17.jdk/Contents/Home
+
+## 默认用 GraalVM 17
+export JAVA_HOME=$JAVA_17_HOME
+export GRAALVM_HOME=$GRAAL_17_HOME
+export PATH=$JAVA_HOME/bin:$PATH
+
+## 快捷切换命令
+alias java8='export JAVA_HOME=$JAVA_8_HOME && export PATH=$JAVA_HOME/bin:$PATH'
+alias java17='export JAVA_HOME=$JAVA_17_HOME && export PATH=$JAVA_HOME/bin:$PATH'
+alias java21='export JAVA_HOME=$JAVA_21_HOME && export PATH=$JAVA_HOME/bin:$PATH'
+alias graal17='export JAVA_HOME=$GRAAL_17_HOME && export GRAALVM_HOME=$GRAAL_17_HOME && export PATH=$JAVA_HOME/bin:$PATH'
+```
+
 ### python环境
 
 使用pyenv这个包来管理python环境,这个的好处是可以给不同的项目设置python版本,其原理是在项目目录下设置一个文件,当进入到此文件夹时,默认选择对应的python版本. 一般在ide中如pycharm中也是可以选择不同的python版本的.
@@ -319,3 +346,32 @@ docker run -d \
 4.管理工具
 此管理工具是常用的一个,也尝试过其他的工具,但是都不是很习惯
 [Offset Explorer](https://www.kafkatool.com/download.html)
+
+### 6.nexus3
+
+使用docker搭建
+```shell
+docker run -d \
+  --name nexus \
+  -p 6081:8081 \
+  -v /Users/eee/docker/nexus3:/nexus-data \
+  sonatype/nexus3:latest
+```
+密码
+e0ad52cc-5ac5-46c2-9a52-f5348265a68e
+
+### 7. emqx
+
+使用docker
+```shell
+docker run -d --name emqx \
+  -p 1883:1883 -p 8083:8083 \
+  -p 8084:8084 -p 8883:8883 \
+  -p 18083:18083 \
+  -v /Users/eee/docker/emqx/data:/opt/emqx/data \
+  -v /Users/eee/docker/emqx/log:/opt/emqx/log \
+  emqx/emqx:5.8.8
+```
+帐号密码
+public
+public.@
