@@ -375,3 +375,17 @@ docker run -d --name emqx \
 帐号密码
 public
 public.@
+
+### 8. postgresql
+这个镜像也是bitnami的
+```shell
+docker run -d \
+  --name postgres \
+  --network local \
+  -e POSTGRESQL_USERNAME=postgres \
+  -e POSTGRESQL_PASSWORD=123456 \
+  -v /Users/eee/docker/postgres:/bitnami/postgresql \
+  -p 5432:5432 \
+  bitnami/postgresql:17
+
+```
